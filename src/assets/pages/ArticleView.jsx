@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getArticles } from "../api/api";
+
+
+import CommentBar from "../components/CommentBar";
+
 import { Container , Row, Col, Image, Spinner} from "react-bootstrap";
+
 
 
 export default function ArticleView() {
@@ -28,6 +33,7 @@ export default function ArticleView() {
   }
 
 
+
   return (
     <>
       <Container>
@@ -44,6 +50,7 @@ export default function ArticleView() {
         <Col className="p-3 mb-2 bg-primary-subtle text-emphasis-primary">{currArticle.body}</Col>
       </Row>
       </Container>
+      <CommentBar currID={id}/>
     </>
   );
 }
