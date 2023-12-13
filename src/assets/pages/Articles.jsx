@@ -14,7 +14,7 @@ export default function Articles() {
   
   useEffect(() => {
       getArticles().then((res) => {
-          setArticles(res);
+          setArticles(res.articles);
           setIsLoading(false)
         });
     }, []);
