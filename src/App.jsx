@@ -6,6 +6,7 @@ import Login from './assets/pages/Login'
 import Articles from './assets/pages/Articles'
 import Topbar from "./assets/components/Topbar";
 import Navbar from "./assets/components/Navbar";
+import ArticleView from "./assets/pages/ArticleView";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/articles" element={<Articles />}></Route>
+          <Route path="/articles/:article_id" element={<ArticleView />}></Route>
         </Routes>
       </div>
     </>

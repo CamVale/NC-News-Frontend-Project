@@ -5,9 +5,11 @@ import { useEffect } from "react";
 import { MDBTypography } from "mdb-react-ui-kit";
 import { Spinner } from "react-bootstrap";
 
+
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
 
   
   useEffect(() => {
@@ -36,3 +38,4 @@ export default function Articles() {
     </>
   );
 }
+
