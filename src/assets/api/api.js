@@ -15,3 +15,12 @@ export function getArticles(ID) {
         return res
       });
   }
+
+  export function getComments(ID){
+
+    return fetch(`https://be-portfolio-project.onrender.com/api/articles/${ID}/comments`).then((data)=>{
+      return data.json()
+    }).then((res)=>{
+      return res.comments
+    })
+  }

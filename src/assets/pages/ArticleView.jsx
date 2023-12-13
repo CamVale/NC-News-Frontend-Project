@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getArticles } from "../api/api";
 import { Container , Row, Col, Image} from "react-bootstrap";
+import CommentBar from "../components/CommentBar";
 
 
 export default function ArticleView() {
@@ -12,11 +13,10 @@ export default function ArticleView() {
   
   useEffect(() => {
     getArticles(id).then((res) => {
-      setCurrArticle(res);
+      setCurrArticle(res)
     });
   }, []);
 
-  console.log(currArticle)
 
   return (
     <>
@@ -33,6 +33,7 @@ export default function ArticleView() {
         <Col className="p-3 mb-2 bg-primary-subtle text-emphasis-primary">{currArticle.body}</Col>
       </Row>
       </Container>
+      <CommentBar currID={id}/>
     </>
   );
 }
