@@ -17,7 +17,7 @@ export default function CommentBar(props) {
     <ListGroup>
       {currComments.map((comment) => {
         return (
-          <ListGroup.Item>
+          <ListGroup.Item key={comment.comment_id}>
             <div className="ms-2 me-auto">
               <div className="fw-bold">{comment.author} <small className="text-muted" style={{ fontSize: "12px" }}> posted at: {new Date(comment.created_at).toUTCString()}</small></div>
               {comment.body}
