@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getArticles } from "../api/api";
 import { Container , Row, Col, Image} from "react-bootstrap";
 import CommentBar from "../components/CommentBar";
@@ -8,8 +8,8 @@ import CommentBar from "../components/CommentBar";
 export default function ArticleView() {
   const [currArticle, setCurrArticle] = useState({});
   const {
-    state: { id },
-  } = useLocation();
+    article_id : id
+  } = useParams();
   
   useEffect(() => {
     getArticles(id).then((res) => {
