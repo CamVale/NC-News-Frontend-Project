@@ -5,7 +5,6 @@ import { Badge, ListGroup } from "react-bootstrap";
 export default function CommentBar(props) {
   const [currComments, setCurrComments] = useState([]);
 
-  console.log(props.currID, "commentbar");
 
   useEffect(() => {
     getComments(props.currID).then((res) => {
