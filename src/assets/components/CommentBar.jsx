@@ -18,9 +18,6 @@ export default function CommentBar(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [userComment, setUserComment] = useState("");
 
-
-  useEffect(() => {}, [userComment]);
-
   useEffect(() => {
     getComments(props.currID).then((res) => {
       setCurrComments(res);
@@ -89,11 +86,20 @@ export default function CommentBar(props) {
     </>
   ) : (
     <ListGroup>
-      <ListGroup.Item>
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">No comments yet...</div>
-        </div>
-      </ListGroup.Item>
+      {currComments.map((comment) => {
+        return (
+          <ListGroup.Item key={comment.comment_id}>
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">{comment.author} <small className="text-muted" style={{ fontSize: "12px" }}> posted at: {new Date(comment.created_at).toUTCString()}</small></div>
+              {comment.body}
+            </div>
+            <Badge bg="primary" pill>
+              {comment.votes}
+            </Badge>
+          </ListGroup.Item>
+        );
+      })}
+
     </ListGroup>
   );
 }
