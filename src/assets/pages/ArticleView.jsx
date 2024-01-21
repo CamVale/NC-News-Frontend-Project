@@ -12,6 +12,7 @@ import { Container , Row, Col, Image, Spinner} from "react-bootstrap";
 export default function ArticleView() {
   const [currArticle, setCurrArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true)
+  const [articleID, setArticleID] = useState()
   const {
     article_id: id
   } = useParams();
@@ -21,7 +22,9 @@ export default function ArticleView() {
       setCurrArticle(res);
       setIsLoading(false)
     });
-  }, []);
+  }, [useParams()]);
+
+
 
   if (isLoading) {
     return (<>
