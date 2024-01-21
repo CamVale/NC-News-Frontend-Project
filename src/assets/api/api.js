@@ -77,7 +77,7 @@ export function getArticlesByTopic(topic) {
     .then((data) => {
       return data.json();
     })
-  }.then((res) => {
+  .then((res) => {
       return res;
     });
 }

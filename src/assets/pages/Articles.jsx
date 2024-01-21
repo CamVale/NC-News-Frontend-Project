@@ -15,7 +15,6 @@ export default function Articles() {
   const search = url.get('search')
 
   useEffect(()=>{
-    console.log('o!')
     if (topic){
       setIsLoading(true)
       getArticlesByTopic(url.get('topic')).then((res)=>{
