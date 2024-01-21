@@ -7,6 +7,7 @@ import {
   Col,
   Image,
   ButtonGroup,
+  Spinner,
   Button,
   Badge,
 } from "react-bootstrap";
@@ -17,13 +18,28 @@ export default function ArticleView() {
   const [currArticle, setCurrArticle] = useState({});
   const [currVotes, setCurrVotes] = useState();
   const { article_id: id } = useParams();
-
+  const [articleID, setArticleID] = useState()
+  const [isLoading, setIsLoading] = useState(true)
+  
   useEffect(() => {
     getArticles(id).then((res) => {
       setCurrArticle(res);
       setCurrVotes(res.votes);
+      setIsLoading(false)
     });
-  }, []);
+  }, [useParams()]);
+
+
+
+  if (isLoading) {
+    return (<>
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner><h1>Loading...</h1>
+      </>
+    );
+  }
+
 
   const handleVote = (change) => {
     patchVotes(id, change);
@@ -38,6 +54,7 @@ export default function ArticleView() {
         <Row>
           <Col xs="10">
             <Image src={currArticle.article_img_url} fluid />
+    <small className="text-muted">{new Date(currArticle.created_at).toUTCString()}</small>
           </Col>
           <Col xs="2">
             <ButtonGroup style={{ translate: "-20px" }} vertical>
